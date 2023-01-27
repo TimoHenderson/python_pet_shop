@@ -2,4 +2,4 @@
 
 A set of functions to manage a pet shop.
 
-The functions were written to satisgy the given tests
+The functions were written to satisfy the given tests
