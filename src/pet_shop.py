@@ -67,10 +67,7 @@ def sell_pet_to_customer(pet_shop, pet, customer):
         pet_name = pet["name"]
         pet_price = pet["price"]
 
-        pet_available = False if find_pet_by_name(pet_shop, pet_name) == None else True
-        can_afford = customer_can_afford_pet(customer, pet)
-
-        if pet_available and can_afford:
+        if customer_can_afford_pet(customer, pet):
             remove_customer_cash(customer, pet_price)
             add_or_remove_cash(pet_shop, pet_price)
             remove_pet_by_name(pet_shop, pet_name)
