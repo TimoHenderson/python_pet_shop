@@ -56,3 +56,23 @@ def get_customer_pet_count(customer):
 
 def add_pet_to_customer(customer, pet):
     customer["pets"].append(pet)
+
+
+def customer_can_afford_pet(customer, pet):
+    return get_customer_cash(customer) >= pet["price"]
+
+
+def sell_pet_to_customer(pet_shop, pet, customer):
+    if pet != None:
+        pet_name = pet["name"]
+        pet_price = pet["price"]
+
+        pet_available = False if find_pet_by_name(pet_shop, pet_name) == None else True
+        can_afford = customer_can_afford_pet(customer, pet)
+
+        if pet_available and can_afford:
+            remove_customer_cash(customer, pet_price)
+            add_or_remove_cash(pet_shop, pet_price)
+            remove_pet_by_name(pet_shop, pet_name)
+            add_pet_to_customer(customer, pet)
+            pet_shop["admin"]["pets_sold"] += 1
