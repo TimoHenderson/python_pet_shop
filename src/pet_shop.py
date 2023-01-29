@@ -28,9 +28,6 @@ def get_pets_by_breed(pet_shop, breed):
 
 
 def find_pet_by_name(pet_shop, name):
-    # for pet in pet_shop["pets"]:
-    #     if pet["name"] == name:
-    #         return pet
     return next((pet for pet in pet_shop["pets"] if pet["name"] == name), None)
 
 
@@ -73,4 +70,4 @@ def sell_pet_to_customer(pet_shop, pet, customer):
             add_or_remove_cash(pet_shop, pet_price)
             remove_pet_by_name(pet_shop, pet_name)
             add_pet_to_customer(customer, pet)
-            pet_shop["admin"]["pets_sold"] += 1
+            increase_pets_sold(pet_shop, 1)
